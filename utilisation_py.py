@@ -1,8 +1,8 @@
-import pandas as pd
+nimport pandas as pd
 
 import streamlit as st
 
-st.set_page_config(page_title="CSV Appender", page_icon=":guardsman:", layout="wide")
+st.set_page_config(page_title="Medicine utilisation", page_icon=":guardsman:", layout="wide")
 st.image("chailogo.png", width=200)
 st.title("Top 20% medicine procured by NDoH contributing 80% annual spend")
 
