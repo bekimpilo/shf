@@ -3,7 +3,26 @@ import pandas as pd
 import streamlit as st
 
 st.set_page_config(page_title="CSV Appender", page_icon=":guardsman:", layout="wide")
-st.title("80/20 Analysis")
+st.title("Top 20% medicine procured by NDoH contributing 80% annual spen]")
+st.image("chailogo.png", width=200)
+
+file_1 = st.file_uploader("Upload the first CSV file", type=["csv"])
+file_2 = st.file_uploader("Upload the second CSV file (optional)", type=["csv"])
+
+if file_1:
+    df1 = pd.read_csv(file_1)
+    st.dataframe(df1.head())
+
+    if file_2:
+        df2 = pd.read_csv(file_2)
+        st.dataframe(df2.head())
+
+        df_appended = pd.concat([df1, df2], axis=0)
+        st.dataframe(df_appended.head())
+    if st.button('Append'):
+        st.success('Appending the two dataset...')
+else:
+    st.warning("No file was uploaded.")
 
 file_1 = st.file_uploader("Upload the first CSV file", type=["csv"])
 file_2 = st.file_uploader("Upload the second CSV file (optional)", type=["csv"])
