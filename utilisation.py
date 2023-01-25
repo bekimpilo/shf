@@ -7,8 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1cM6i2ucUeFlP9e1NsQG2AYJBDnIg7pu0
 """
 
-pip install pandas
-
 pip install streamlit
 
 import pandas as pd
@@ -19,7 +17,7 @@ from google.colab import files
 uploaded = files.upload()
 
 st.set_page_config(page_title="CSV Appender", page_icon=":guardsman:", layout="wide")
-st.title("80/20 Analysis")
+st.title("Medicine utilisation analysis")
 st.image("chailogo.png", width=200)
 
 
