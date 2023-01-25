@@ -3,8 +3,9 @@ import pandas as pd
 import streamlit as st
 
 st.set_page_config(page_title="CSV Appender", page_icon=":guardsman:", layout="wide")
-st.title("Top 20% medicine procured by NDoH contributing 80% annual spen]")
 st.image("chailogo.png", width=200)
+st.title("Top 20% medicine procured by NDoH contributing 80% annual spend)
+
 
 file_1 = st.file_uploader("Upload the first CSV file", type=["csv"])
 file_2 = st.file_uploader("Upload the second CSV file (optional)", type=["csv"])
