@@ -1,5 +1,4 @@
-nimport pandas as pd
-
+import pandas as pd
 import streamlit as st
 
 st.set_page_config(page_title="Medicine utilisation", page_icon=":guardsman:", layout="wide")
