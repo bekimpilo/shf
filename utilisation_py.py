@@ -5,25 +5,6 @@ st.set_page_config(page_title="Medicine utilisation", page_icon=":guardsman:", l
 st.image("chailogo.png", width=200)
 st.title("Top 20% medicine procured by NDoH contributing 80% annual spend")
 
-
-file_1 = st.file_uploader("Upload the first CSV file", type=["csv"])
-file_2 = st.file_uploader("Upload the second CSV file (optional)", type=["csv"])
-
-if file_1:
-    df1 = pd.read_csv(file_1)
-    st.dataframe(df1.head())
-
-    if file_2:
-        df2 = pd.read_csv(file_2)
-        st.dataframe(df2.head())
-
-        df_appended = pd.concat([df1, df2], axis=0)
-        st.dataframe(df_appended.head())
-    if st.button('Append'):
-        st.success('Appending the two dataset...')
-else:
-    st.warning("No file was uploaded.")
-
 file_1 = st.file_uploader("Upload the first CSV file", type=["csv"])
 file_2 = st.file_uploader("Upload the second CSV file (optional)", type=["csv"])
 
