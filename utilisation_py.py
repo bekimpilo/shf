@@ -11,14 +11,18 @@ file_2 = st.file_uploader("Upload the second CSV file (optional)", type=["csv"])
 
 if file_1:
     df1 = pd.read_csv(file_1)
+    st.subheader("The first 5 rows of dataset 1", color="blue")
     st.dataframe(df1.head())
 
     if file_2:
         df2 = pd.read_csv(file_2)
+        st.subheader("The first 5 rows of dataset 2", color="blue")
         st.dataframe(df2.head())
 
     if st.button('Append'):
         st.success('Appending the two dataset...')
+        df_appended = pd.concat([df1, df2], axis=0)
+        st.dataframe(df_appended.head())
 else:
     st.warning("No file was uploaded.")
     
