@@ -1,4 +1,4 @@
-import pandas as pd
+eimport pandas as pd
 import streamlit as st
 
 st.set_page_config(page_title="Medicine utilisation", page_icon=":guardsman:", layout="wide")
@@ -21,14 +21,15 @@ if file_1:
         st.success('Appending the two dataset...')
 else:
     st.warning("No file was uploaded.")
+    
     df_appended = pd.concat([df1, df2], axis=0)
     st.dataframe(df_appended.head())
     df_appended["pct_contribution"] = df_appended.groupby("nsn")["order_qty"].transform(lambda x: x/x.sum()*100)
     df_appended_sorted = df_appended.sort_values(by="pct_contribution", ascending=False)
     df_appended_sorted["cumulative_pct"] = df_appended_sorted["pct_contribution"].cumsum()
-    important_factors = df_appended_sorted[df_appended_sorted["cumulative_pct"] <= 80]
+    important_medicines = df_appended_sorted[df_appended_sorted["cumulative_pct"] <= 80]
     st.dataframe(important_factors)
     
     if st.button('Download CSV'):
-        important_factors.to_csv("important_factors.csv", index=False)
-        st.success('Important factors downloaded as CSV')
+        important_medicines.to_csv("important_medicines.csv", index=False)
+        st.success('Important medicines downloaded as CSV')
