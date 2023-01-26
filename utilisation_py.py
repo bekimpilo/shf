@@ -28,7 +28,7 @@ else:
     df_appended_sorted = df_appended.sort_values(by="pct_contribution", ascending=False)
     df_appended_sorted["cumulative_pct"] = df_appended_sorted["pct_contribution"].cumsum()
     important_medicines = df_appended_sorted[df_appended_sorted["cumulative_pct"] <= 80]
-    st.dataframe(important_factors)
+    st.dataframe(important_medicines)
     
     if st.button('Download CSV'):
         important_medicines.to_csv("important_medicines.csv", index=False)
