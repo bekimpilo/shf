@@ -22,6 +22,7 @@ if file_1:
     if st.button('Append'):
         st.success('Appending the two dataset...')
         df_appended = pd.concat([df1, df2], axis=0)
+        st.subheader("The first 5 rows of the appended dataset", color="blue")
         st.dataframe(df_appended.head())
 else:
     st.warning("No file was uploaded.")
