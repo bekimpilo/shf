@@ -17,16 +17,13 @@ if file_1:
         df2 = pd.read_csv(file_2)
         st.dataframe(df2.head())
 
-        df_appended = pd.concat([df1, df2], axis=0)
-        st.dataframe(df_appended.head())
     if st.button('Append'):
         st.success('Appending the two dataset...')
 else:
     st.warning("No file was uploaded.")
-
-if st.button('Append'):
-    st.success('Appending the two dataset...')
-    df_appended["pct_contribution"] = df_appended.groupby("outcome")["outcome"].transform(lambda x: x/x.sum()*100)
+    df_appended = pd.concat([df1, df2], axis=0)
+    st.dataframe(df_appended.head())
+    df_appended["pct_contribution"] = df_appended.groupby("nsn")["order_qty"].transform(lambda x: x/x.sum()*100)
     df_appended_sorted = df_appended.sort_values(by="pct_contribution", ascending=False)
     df_appended_sorted["cumulative_pct"] = df_appended_sorted["pct_contribution"].cumsum()
     important_factors = df_appended_sorted[df_appended_sorted["cumulative_pct"] <= 80]
